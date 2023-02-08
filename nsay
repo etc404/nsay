@@ -1,0 +1,21 @@
+#!/bin/bash
+
+input=$(echo $1 | ./morseify);
+for (( i=0; i<${#input}; i++ )); do
+	case ${input:$i:1} in
+		'.')
+			./ndot
+			;;
+		'-')
+			./ndash
+			;;
+		' ')
+			./nspace
+			;;
+		'/')
+			./ncspace
+			;;
+		*)
+			;;
+	esac
+done
