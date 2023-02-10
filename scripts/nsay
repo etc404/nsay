@@ -1,6 +1,14 @@
 #!/bin/bash
 
-scale=1
+if [[ "$2" == "" ]]; then
+
+	scale=1;
+
+else
+
+	scale="$2";
+
+fi;
 
 declare -A morse
 morse[0]='-----'
