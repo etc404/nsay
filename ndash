@@ -1,7 +1,0 @@
-#!/bin/bash
-
-numlockx off;
-numlockx on;
-sleep .3;
-numlockx off;
-sleep .1;

@@ -1,98 +1,52 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-#
-
-#set -x
-
-#######################################
+scale=1
 
 declare -A morse
-
 morse[0]='-----'
-
 morse[1]='.----'
-
 morse[2]='..---'
-
 morse[3]='...--'
-
 morse[4]='....-'
-
 morse[5]='.....'
-
 morse[6]='-....'
-
 morse[7]='--...'
-
 morse[8]='---..'
-
 morse[9]='----.'
-
 morse[A]='.-'
-
 morse[B]='-...'
-
 morse[C]='-.-.'
-
 morse[D]='-..'
-
 morse[E]='.'
-
 morse[F]='..-.'
-
 morse[G]='--.'
-
 morse[H]='....'
-
 morse[I]='..'
-
 morse[J]='.---'
-
 morse[K]='-.-'
-
 morse[L]='.-..'
-
 morse[M]='--'
-
 morse[N]='-.'
-
 morse[O]='---'
-
 morse[P]='.--.'
-
 morse[Q]='--.-'
-
 morse[R]='.-.'
-
 morse[S]='...'
-
 morse[T]='-'
-
 morse[U]='..-'
-
 morse[V]='...-'
-
 morse[W]='.--'
-
 morse[X]='-..-'
-
 morse[Y]='-.--'
-
 morse[Z]='--..'
-
 morse[.]='.-.-.-'
-
 morse[,]='--..--'
-
 morse[?]='..--..'
-
 morse[/]='-..-.'
-
 morse[!]='-.-.--'
 
-#######################################
-
-while read -rN1 c; do
+morseify () {
+	while read -rN1 c; do
 
 	c=${c^}
 
@@ -110,4 +64,33 @@ while read -rN1 c; do
 
 	fi
 
+done
+}
+
+input=$(echo "$1" | morseify);
+for (( i=0; i<${#input}; i++ )); do
+	case ${input:$i:1} in
+		'.')
+			numlockx off;
+			numlockx on;
+			sleep "$(bc<<<.1*$scale)";
+			numlockx off;
+			sleep "$(bc<<<.1*$scale)";
+			;;
+		'-')
+			numlockx off;
+			numlockx on;
+			sleep "$(bc<<<.3*$scale)";
+			numlockx off;
+			sleep "$(bc<<<.1*$scale)";
+			;;
+		' ')
+			sleep "$(bc<<<.3*$scale)";
+			;;
+		'/')
+			sleep "$(bc<<<.4*$scale)";
+			;;
+		*)
+			;;
+	esac
 done
