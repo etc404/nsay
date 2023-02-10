@@ -75,30 +75,56 @@ morseify () {
 done
 }
 
-input=$(echo "$1" | morseify);
-for (( i=0; i<${#input}; i++ )); do
-	case ${input:$i:1} in
-		'.')
-			numlockx off;
-			numlockx on;
-			sleep "$(bc<<<.1*$scale)";
-			numlockx off;
-			sleep "$(bc<<<.1*$scale)";
-			;;
-		'-')
-			numlockx off;
-			numlockx on;
-			sleep "$(bc<<<.3*$scale)";
-			numlockx off;
-			sleep "$(bc<<<.1*$scale)";
-			;;
-		' ')
-			sleep "$(bc<<<.3*$scale)";
-			;;
-		'/')
-			sleep "$(bc<<<.4*$scale)";
-			;;
-		*)
-			;;
-	esac
-done
+display () {
+	input=$(echo "$1" | morseify);
+	for (( i=0; i<${#input}; i++ )); do
+		case ${input:$i:1} in
+			'.')
+				numlockx off;
+				numlockx on;
+				sleep "$(bc<<<.1*"$scale")";
+				numlockx off;
+				sleep "$(bc<<<.1*"$scale")";
+				;;
+			'-')
+				numlockx off;
+				numlockx on;
+				sleep "$(bc<<<.3*"$scale")";
+				numlockx off;
+				sleep "$(bc<<<.1*"$scale")";
+				;;
+			' ')
+				sleep "$(bc<<<.3*"$scale")";
+				;;
+			'/')
+				sleep "$(bc<<<.4*"$scale")";
+				;;
+			*)
+				;;
+		esac
+	done
+}
+
+letters () {
+	echo a
+}
+
+words () {
+	echo a
+}
+
+sentences () {
+	echo a
+}
+
+usage () {
+	echo "Usage: nsay [ OPTIONS ]
+	-p/--print <text>	Display the text via numlock morse
+	-h/--help		Display this message and exit (default)
+	-t/--scale <scale>	Set the morse time scale (default: 1)
+	-w/--words		Test user on words
+	-l/--letters		Test user on letters
+	-s/--sentence		Test user on sentences"
+}
+
+usage;
