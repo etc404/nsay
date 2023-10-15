@@ -1,5 +1,5 @@
 # NSay
-Practice morse with your numlock indicator!
+Display morse with your numlock indicator!
 
 ## Dependencies
 
@@ -15,5 +15,3 @@ Run the script! May require chmod +x.
 		-h/--help			Display this message and exit (default)
 		-t/--scale <scale>	Set the morse time scale (default: 1)
 		-w/--words			Test user on words
-		-l/--letters		Test user on letters
-		-s/--sentence		Test user on sentences
